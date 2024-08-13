@@ -1,0 +1,24 @@
+.course-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: #fff;
+    position: relative; /* For positioning the button */
+    overflow: hidden; /* Ensures button doesn't overflow card edges */
+  }
+  .course-img {
+    margin: 15px;
+    border-radius: 8px; /* Rounded corners for the image */
+    width: 100%; /* Full width image */
+  }
+  .card-body {
+    padding: 20px;
+  }
+  .card-title {
+    margin-bottom: 10px;
+    color: #343a40; /* Dark grey color for text */
+  }
+  .enroll-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
