@@ -1,0 +1,13 @@
+<div>
+    <div class="flex flex-row">
+        <div *ngFor="let category of categories" class="border-2  px-4 ">
+            <div class=" ">
+                <a href="#" class="text-[20px]">{{category}}</a></div>
+        </div>
+    </div>
+    <div class="list-courses mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div *ngFor="let course of courses" class="">
+            <app-course-card [course]="course"></app-course-card>
+        </div>
+    </div>
+</div>

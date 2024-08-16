@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/signUp/sign-up.component';
 import { CardComponent } from './components/card/card.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

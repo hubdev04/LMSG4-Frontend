@@ -1,0 +1,16 @@
+<div class="w-full m-2 ">
+    <div class="flex flex-row justify-evenly">
+        <div *ngFor="let testimonial of testimonials">
+            <div class="border-2  px-4 ">
+                <div class=" ">
+                    <p>{{testimonial.comments}}</p>
+                    <div>
+                        <img alt="image">
+                        <h2>{{testimonial.position}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
