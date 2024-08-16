@@ -1,21 +1,33 @@
 import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule],
+  imports: [FormsModule],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
+  firstName: string = '';
+  lastName: string = '';
+  email: string = '';
+  phoneNumber: string = '';
+  password: string = '';
+  confirmPassword: string = '';
 
+  onSubmit(form: NgForm) {
+    if(!form.valid){
+      alert('fill the form');
+      return;
+    }
+    else if (this.password !== this.confirmPassword) {
+      alert('Passwords do not match.');
+      return;
+    }
+    else{console.log('Form submitted:', form.value);
+    alert('Signup successful!');}
+    // Handle the signup logic
+   
+  }
 }

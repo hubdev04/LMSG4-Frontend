@@ -2,8 +2,8 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  /* border: 1px solid #ccc; */
+
 }
 
 .form-group {
@@ -36,4 +36,24 @@ button {
 
 button:disabled {
   background-color: #ccc;
+}
+/* Styles for error state */
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  display: none;
+  color: #dc3545;
+  font-size: 0.875em;
+}
+
+/* Show feedback when input is invalid */
+.form-control.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* Required field indicator */
+.form-label .text-danger {
+  font-size: 0.9em;
 }
