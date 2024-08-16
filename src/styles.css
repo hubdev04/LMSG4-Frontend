@@ -3,8 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 /* Import Angular Material core styles and theme */
-@import "~@angular/material/core/theming/all-theme";
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css"; /* Or another theme */
 
 body, html {
     width: 100%;
