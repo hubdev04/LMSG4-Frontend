@@ -5,11 +5,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-<<<<<<< HEAD
-
-=======
-/* Import Angular Material core styles and theme */
->>>>>>> b78ca7fca866757957c0799f335780e324f0dc0d
 
 body, html {
     width: 100%;

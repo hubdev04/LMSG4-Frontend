@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
@@ -9,25 +10,25 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
-  phoneNumber: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-
-  onSubmit(form: NgForm) {
-    if(!form.valid){
-      alert('fill the form');
-      return;
-    }
-    else if (this.password !== this.confirmPassword) {
-      alert('Passwords do not match.');
-      return;
-    }
-    else{console.log('Form submitted:', form.value);
-    alert('Signup successful!');}
-    // Handle the signup logic
-   
+  signUpForm: any ={
+    firstName : '',
+  lastName : '',
+  email : '',
+  phoneNumber : '',
+  password : '',
+  confirmPassword : '',
   }
+  
+  onSubmit(form :NgForm){
+    if(form.valid &&  this.signUpForm.password===this.signUpForm.confirmPassword){
+      alert("success");
+      return;
+    }
+    else if(!form.valid){
+      console.log(form.errors)
+    }
+  }
+  
+
+  
 }

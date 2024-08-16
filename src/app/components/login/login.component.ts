@@ -10,16 +10,18 @@ import { FormsModule } from '@angular/forms';  // Import FormsModule
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
-
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      // Handle login logic here
-      console.log('Form submitted:', form.value);
-      alert('Login successful!');
-    } else {
-      alert('Please fill out the form correctly.');
+  loginForm: any ={
+  email : '',
+  password : '',
+  }
+  
+  onSubmit(form :NgForm){
+    if(form.valid ){
+      alert("success");
+      return;
+    }
+    else if(!form.valid){
+      console.log(form.errors)
     }
   }
 }
