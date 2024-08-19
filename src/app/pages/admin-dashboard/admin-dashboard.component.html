@@ -1,0 +1,39 @@
+<div class="container mt-5" id="admin">
+    
+    <div class="flex r">
+    <h2 class="text-center text-blue-500 text-bold  m-3 p-3">Admin Dashboard  </h2>
+    <button class="text-bold text-center border-solid ">All Courses</button>
+    </div>
+
+    <h2 class="m-2 p-2">Approval Requests!!</h2>
+    <div class=" justify-content-around">
+        
+        <div class=" col-md-6 mb-5 " *ngFor="let course of courses">
+            <div class="card h-100 d-flex flex-column shadow-lg rounded">
+                <div class="card-header bg-primary text-white rounded-top">
+                    <h5 class="card-title mb-0 text-center">{{ course.title }}</h5>
+                </div>
+                <div class="card-body flex-grow-1 p-4">
+                    <p><strong>Course ID:</strong> {{ course.id }}</p>
+                    <p><strong>Mentor:</strong> {{ course.mentor }}</p>
+                    <p><strong>Status:</strong>
+                        <span [ngClass]="{
+                            'badge bg-warning text-dark': course.status === 'Pending',
+                            'badge bg-success': course.status === 'Accepted',
+                            'badge bg-danger': course.status === 'Rejected'
+                        }">
+                            {{ course.status }}
+                        </span>
+                    </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center p-3">
+                    <div class="btn-group w-100">
+                        <button class="btn btn-success btn-sm w-50" (click)="acceptCourse(course)">Accept</button>
+                        <button class="btn btn-danger btn-sm w-50" (click)="rejectCourse(course)">Reject</button>
+                    </div>
+                    <button class="btn btn-warning btn-sm ml-2" (click)="deleteCourse(course)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
