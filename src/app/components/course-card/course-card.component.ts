@@ -1,4 +1,5 @@
 import { Component,Input } from '@angular/core';
+import { Course } from '../../models/Course.model';
 
 @Component({
   selector: 'app-course-card',
@@ -8,5 +9,5 @@ import { Component,Input } from '@angular/core';
   styleUrls: ['./course-card.component.css']
 })
 export class CourseCardComponent {
-  @Input() course!: { id: number, name: string, description: string, mentor: string };
+  @Input() course!: Course;
 }

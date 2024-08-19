@@ -27,7 +27,7 @@
           <!-- Last Name input -->
           <div>
             <label class="block text-gray-500 text-sm font-bold mb-2" for="lastName">
-              Last Name <span class="text-red-500">*</span>
+              Last Name 
             </label>
             <input type="text" id="lastName" name="lastName" [(ngModel)]="signUpForm.lastName" #lastNameControl="ngModel" 
               class="form-input w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
@@ -56,15 +56,17 @@
             <label class="block text-gray-500 text-sm font-bold mb-2" for="phoneNumber">
               Phone Number <span class="text-red-500">*</span>
             </label>
-            <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="signUpForm.phoneNumber" #phoneNumberControl="ngModel"
+            <input type="number" id="phoneNumber" name="phoneNumber" [(ngModel)]="signUpForm.phoneNumber" #phoneNumberControl="ngModel"
               class="form-input w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
               placeholder="Enter your phone number" required pattern="\d{10}" />
+              <div class="text-danger text-red-500 text-xs mt-1">
               @if((phoneNumberControl.touched || phoneNumberControl.dirty) && phoneNumberControl.errors?.['required']){
                 <span>This is required</span>
               }
               @else if((phoneNumberControl.touched || phoneNumberControl.dirty) && phoneNumberControl.errors?.['pattern']){
                 <span>Number is invalid</span>
               }
+            </div>
             
           </div>
 
@@ -110,6 +112,7 @@
           </div>
         </form>
       </div>
+      <a href="/admin">admin</a>
     </div>
   </div>
 </section>

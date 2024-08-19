@@ -20,11 +20,18 @@ export class SignUpComponent {
   }
   
   onSubmit(form :NgForm){
+    if (form.invalid) {
+      Object.keys(form.controls).forEach(field => {
+        const control = form.control.get(field);
+        control?.markAsTouched({ onlySelf: true });
+      });
+      return;
+    }
     if(form.valid &&  this.signUpForm.password===this.signUpForm.confirmPassword){
       alert("success");
       return;
     }
-    else if(!form.valid){
+    else {
       console.log(form.errors)
     }
   }

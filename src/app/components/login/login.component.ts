@@ -17,11 +17,18 @@ export class LoginComponent {
   }
   
   onSubmit(form :NgForm){
+    if (form.invalid) {
+      Object.keys(form.controls).forEach(field => {
+        const control = form.control.get(field);
+        control?.markAsTouched({ onlySelf: true });
+      });
+      return;
+    }
     if(form.valid && this.logInForm.password==="1234" ){
       alert("success");
       return;
     }
-    else if(!form.valid){
+    else{
       console.log(form.errors)
     }
   }
