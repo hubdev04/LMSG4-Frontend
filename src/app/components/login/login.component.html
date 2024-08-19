@@ -14,10 +14,17 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
               Email address <span class="text-red-500">*</span>
             </label>
-            <input type="email" id="email" name="email" [(ngModel)]="email" #emailControl="ngModel" 
+            <input type="email" id="email" name="email" [(ngModel)]="logInForm.email" #emailControl="ngModel" pattern=".+@[a-z0-9.-]+\.[a-z]{2,3}$"
               class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
               placeholder="Enter a valid email address" required />
-            <div *ngIf="emailControl.invalid && emailControl.touched" class="text-red-500 text-xs mt-1">Please enter a valid email address.</div>
+            <div>
+              @if((emailControl.touched || emailControl.dirty) && emailControl.errors?.['required']){
+                <span class="text-red-500">This is required</span>
+              }
+              @else if((emailControl.touched || emailControl.dirty) && emailControl.errors?.['pattern']){
+                <span class="text-red-500">enter a valid email <address></address></span>
+              }
+            </div>
           </div>
 
           <!-- Password input -->
@@ -25,10 +32,15 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
               Password <span class="text-red-500">*</span>
             </label>
-            <input type="password" id="password" name="password" [(ngModel)]="password" #passwordControl="ngModel"
+            <input type="password" id="password" name="password" [(ngModel)]="logInForm.password" #passwordControl="ngModel"
               class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
               placeholder="Enter password" required />
-            <div *ngIf="passwordControl.invalid && passwordControl.touched" class="text-red-500 text-xs mt-1">Please enter your password.</div>
+            <div>
+              @if((passwordControl.touched || passwordControl.dirty) && passwordControl.errors?.['required']){
+                <span class="text-red-500">This is required</span>
+              }
+              
+            </div>
           </div>
 
           <!-- Checkbox -->

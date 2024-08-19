@@ -10,13 +10,14 @@ import { FormsModule } from '@angular/forms';  // Import FormsModule
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginForm: any ={
+
+  logInForm: any ={
   email : '',
   password : '',
   }
   
   onSubmit(form :NgForm){
-    if(form.valid ){
+    if(form.valid && this.logInForm.password==="1234" ){
       alert("success");
       return;
     }
