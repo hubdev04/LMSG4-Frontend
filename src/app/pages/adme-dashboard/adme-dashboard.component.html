@@ -1,0 +1,60 @@
+<div class="container mx-auto mt-8 px-4" id="adme">
+    <!-- Page Header -->
+    <div class="flex justify-between items-center border-b pb-4 mb-8">
+        <h2 class="text-2xl font-bold text-blue-600">Admin Dashboard</h2>
+        <button class="text-sm font-medium bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none">View All Courses</button>
+    </div>
+
+    <!-- Approval Requests Section -->
+    <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4">Approval Requests</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Loop through courses -->
+            <ng-container *ngFor="let course of courses; let i = index">
+                <!-- Check if course status is 'Pending' -->
+                <div *ngIf="course.status === 'Pending'" class="bg-white shadow-lg rounded-lg p-4">
+                    <div class="border-b pb-4 mb-4">
+                        <h3 class="text-lg font-bold text-center text-blue-500">{{ course.title }}</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <p><strong>Course ID:</strong> {{ course.id }}</p>
+                        <p><strong>Mentor:</strong> {{ course.mentor }}</p>
+                        <p><strong>Status:</strong> <span class="text-yellow-500 font-medium">{{ course.status }}</span></p>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="w-full mr-2 bg-green-500 text-white py-2 rounded hover:bg-green-600 focus:outline-none" (click)="acceptCourse(course)">Accept</button>
+                        <button class="w-full mr-2 bg-red-500 text-white py-2 rounded hover:bg-red-600 focus:outline-none" (click)="rejectCourse(course)">Reject</button>
+                        <button class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 focus:outline-none" (click)="deleteCourse(course)">Delete</button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </section>
+
+    <!-- All Courses Section -->
+    <section>
+        <h2 class="text-xl font-semibold mb-4">All Courses</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Loop through all courses -->
+            <div class="bg-white shadow-lg rounded-lg p-4" *ngFor="let course of courses">
+                <div class="border-b pb-4 mb-4">
+                    <h3 class="text-lg font-bold text-center text-blue-500">{{ course.title }}</h3>
+                </div>
+                <div class="space-y-2">
+                    <p><strong>Course ID:</strong> {{ course.id }}</p>
+                    <p><strong>Mentor:</strong> {{ course.mentor }}</p>
+                    <p><strong>Status:</strong>
+                        <span [ngClass]="{
+                            'text-yellow-500 font-medium': course.status === 'Pending',
+                            'text-green-500 font-medium': course.status === 'Accepted',
+                            'text-red-500 font-medium': course.status === 'Rejected'
+                        }">{{ course.status }}</span>
+                    </p>
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <button class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 focus:outline-none" (click)="deleteCourse(course)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
