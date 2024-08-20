@@ -31,10 +31,36 @@ export class CourseService {
           }
         }),
         catchError(this.handleError)
-      );
-    
+      ); 
+  }
+  
+  changeStatus(change: any): Observable<Course[]> {
+    return this.http.put<ApiResponse>(`${this.apiUrl}`,change).pipe(
+        map((response: ApiResponse) => {
+          console.log('API Response:', response); // Debugging
+          if (response.success) {
+            return response.result; // Return the array of courses
+          } else {
+            throw new Error(response.message);
+          }
+        }),
+        catchError(this.handleError)
+      ); 
   }
 
+  delCourse(change: any): Observable<Course[]> {
+    return this.http.put<ApiResponse>(`${this.apiUrl}`,change).pipe(
+        map((response: ApiResponse) => {
+          console.log('API Response:', response); // Debugging
+          if (response.success) {
+            return response.result; // Return the array of courses
+          } else {
+            throw new Error(response.message);
+          }
+        }),
+        catchError(this.handleError)
+      ); 
+  }
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
     return throwError(() => new Error('Something went wrong; please try again later.'));
