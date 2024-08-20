@@ -1,0 +1,8 @@
+export interface User{
+    firstName:string,
+    lastName:string,
+    email:string,
+    phoneNumber:number,
+    password:string,
+    role:string
+}
