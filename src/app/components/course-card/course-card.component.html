@@ -1,6 +1,21 @@
-<div class="border-2 px-4 py-2 bg-white rounded-lg shadow-md">
-    <h2 class="text-xl font-bold">{{ course.title }}</h2>
-    <p class="text-sm text-gray-600">ID: {{ course.id }}</p>
-    <p class="text-sm text-gray-600">Mentor: {{ course.category }}</p>
-    <p class="text-sm">{{ course.createdBy }}</p>
-</div>
+@if(course.approvalStatus==="APPROVED"){
+<mat-card class="course-card bg-white shadow-lg rounded-lg overflow-hidden">
+    <img mat-card-image  alt="{{ course.title }}" class="w-full h-48 object-cover">
+  
+    <mat-card-header class="bg-gray-100 px-4 py-2">
+      <mat-card-title class="text-lg font-bold text-gray-800">{{ course.title }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="p-4">
+     
+      <p class="text-sm text-gray-600"><strong>Category:</strong> {{ course.category }}</p>
+      <p class="text-sm text-gray-600"><strong>Created By:</strong> {{ course.createdBy }}</p>
+      <p class="text-sm text-gray-600"><strong>Duration:</strong>  {{course.duration}}</p>
+      <p class="text-sm text-gray-600"><strong>Date Created:</strong> {{ course.createdDate }}</p>
+    </mat-card-content>
+  
+    <mat-card-actions class="p-4 bg-gray-100">
+      <button mat-button color="primary" class="w-full hover:bg-blue-700">More Details</button>
+    </mat-card-actions>
+  </mat-card>
+} 

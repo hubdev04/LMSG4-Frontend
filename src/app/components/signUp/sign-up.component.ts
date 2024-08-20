@@ -17,6 +17,7 @@ export class SignUpComponent {
   phoneNumber : '',
   password : '',
   confirmPassword : '',
+  role: '',
   }
   
   onSubmit(form :NgForm){

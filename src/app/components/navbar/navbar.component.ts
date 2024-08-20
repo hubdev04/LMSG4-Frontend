@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AdminDashboardComponent } from '../../pages/admin-dashboard/admin-dashboard.component';
 import { SignUpComponent } from '../signUp/sign-up.component';
 
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
