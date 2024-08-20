@@ -1,0 +1,110 @@
+.container {
+    max-width: 400px;
+  }
+  .card{
+    flex-direction: row;
+    max-width: 400px;
+  }
+  .card-header {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-footer {
+    padding: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  .btn {
+    margin-right: 5px;
+  }
+  
+  .text-warning {
+    color: #ffc107 !important;
+  }
+  
+  .text-success {
+    color: #28a745 !important;
+  }
+  
+  .text-danger {
+    color: #dc3545 !important;
+  }
+  
+  /* Styles for the Admin Dashboard */
+/* General Spacing and Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#admin h2 {
+    font-weight: bold;
+    color: #343a40;
+}
+
+#admin .card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 15px;
+}
+
+#admin .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+#admin .card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-weight: bold;
+}
+
+#admin .card-body p {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+#admin .badge {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+}
+
+#admin .btn-group {
+    flex-grow: 1;
+}
+
+#admin .btn {
+    border-radius: 5px ;
+    margin-right: 5px;
+}
+
+#admin .btn:last-child {
+    margin-right: 0;
+}
+
+#admin .btn-warning {
+    border-radius: 5px;
+}
+
+#admin .btn-sm {
+    padding: 0.5rem 1rem;
+}
+
+#admin .card-footer {
+    border-top: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#admin .card-footer .btn {
+    min-width: 90px;
+    font-size: 0.85rem;
+}
+.btn
+{
+  font-size: 5px;
+}
