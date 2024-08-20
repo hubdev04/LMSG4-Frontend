@@ -1,27 +1,25 @@
-<nav class="bg-gray-100 p-4">
+<nav class=" p-4 shadow-md" style="background-color: #F5ECFC;">
   <div class="container mx-auto flex items-center justify-between">
     <a href="#" class="flex items-center">
       <img src="../../../assets/images/logo.png" alt="Logo" class="h-12">
     </a>
-    <button class="block lg:hidden p-2 border border-gray-400 rounded" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="lg:hidden p-2 border border-gray-400 rounded" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="block w-6 h-6 bg-gray-600"></span>
     </button>
-    <div class="hidden md:flex md:items-center md:w-auto w-full" id="navbarSupportedContent">
-      <div class="flex-grow flex justify-center space-x-4">
-        <form class="flex items-center space-x-4">
-          <input class="form-input px-4 py-2 border border-gray-300 rounded" type="search" placeholder="Search for courses..." aria-label="Search">
-          <button class="bg-green-500 text-white mx-4 py-2 rounded" type="submit">Search</button>
-        </form>
-      </div>
+    <div class="hidden lg:flex lg:items-center lg:space-x-4 w-full" id="navbarSupportedContent">
+      <form class="flex items-center space-x-4 flex-grow">
+        <input class="form-input px-4 py-2 border border-gray-300 rounded-lg" type="search" placeholder="Search for courses..." aria-label="Search">
+        <button class=" text-white px-4 py-2 rounded-lg" style="background-color: #BFCB7B;" type="submit">Search</button>
+      </form>
       <ul class="flex items-center space-x-6">
         <li>
-          <a class="border border-blue-500 text-blue-500 px-5 py-2 rounded" href="/login">Login</a>
+          <a style="background-color: #80239A;" class="border  text-white px-4 py-2 rounded-lg hover:bg-blue-100" href="/login">Login</a>
         </li>
         <li>
-          <a class="bg-blue-500 text-white px-5 py-2 rounded" href="/signup">Sign Up</a>
+          <a style="background-color: #80239A;" class=" text-white px-4 py-2 rounded-lg hover:bg-blue-600" href="/signup">Sign Up</a>
         </li>
         <li>
-          <a class="bg-blue-500 text-white px-3 py-2 rounded" href="admin">admin</a>
+          <a  style="background-color: #80239A;" class=" text-white px-3 py-2 rounded-lg hover:bg-blue-600" href="/admin">Admin</a>
         </li>
       </ul>
     </div>

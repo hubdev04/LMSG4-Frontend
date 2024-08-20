@@ -1,13 +1,18 @@
-<div>
-    <div class="flex flex-row">
-        <div *ngFor="let category of categories" class="border-2  px-4 ">
-            <div class=" ">
-                <a href="#" class="text-[20px]">{{category}}</a></div>
+<div class="p-4">
+    <!-- Categories Navbar -->
+    <div class="bg-gray-200 p-2 rounded-lg shadow-md mb-4">
+      <div class="flex overflow-x-auto whitespace-nowrap">
+        <div *ngFor="let category of categories" class="inline-block px-4 py-2 mx-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-100 transition-colors">
+          <a href="#" class="text-lg font-semibold text-gray-700">{{category}}</a>
         </div>
+      </div>
     </div>
-    <div class="list-courses mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div *ngFor="let course of courses" class="">
-            <app-course-card [course]="course"></app-course-card>
-        </div>
+  
+    <!-- Courses Grid -->
+    <div class="list-courses grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let course of courses" class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <app-course-card [course]="course"></app-course-card>
+      </div>
     </div>
-</div>
+  </div>
+  
