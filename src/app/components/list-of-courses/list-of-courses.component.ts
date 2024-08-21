@@ -14,13 +14,22 @@ import { CourseService } from '../../services/courses.service';
 })
 export class ListOfCoursesComponent implements OnInit {
   @Input() token!:any;
-  categories: string[] = ['Category 1', 'Category 2', 'Category 3'];
+  categories: string[] = ['development', 'Psychology', 'Buisness'];
   courses: Course[] = [];
-  
+  filteredCourses:Course[]=[];
   selectedCategory: string | null = null;
 
   selectCategory(category: string): void {
+    console.log(this.courses)
     this.selectedCategory = category;
+   
+      if(this.selectedCategory ){
+        this.filteredCourses = this.courses.filter((course) => course.category.toLowerCase() === this.selectedCategory?.toLowerCase());
+      }
+      else{
+        
+      }
+    
     // Optionally, you can also filter courses based on the selected category here
   }
   constructor(private courseService: CourseService) { }
@@ -32,7 +41,8 @@ export class ListOfCoursesComponent implements OnInit {
   fetchCourses(): void {
     this.courseService.getAllCourses().subscribe({
       next: (data: Course[]) => {
-        this.courses = data; // Assign the array of courses to the component property
+        this.courses = data;
+        this.filteredCourses=data;  // Assign the array of courses to the component property
         console.log('Courses fetched:', data); // Debugging
       },
       error: (error) => {
