@@ -7,22 +7,24 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule,RouterModule,RouterOutlet],
+  imports: [FormsModule, RouterModule, RouterOutlet],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
-  signUpForm: any ={
-    firstName : '',
-  lastName : '',
-  email : '',
-  phoneNumber : '',
-  password : '',
-  confirmPassword : '',
- role: ''
+  signUpForm: any = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobile: '',
+    password: '',
+    confirmPassword: '',
+    role: ''
+
   }
-  constructor(private userRegister: UserRegister,private route:Router) {}
-  onSubmit(form :NgForm){
+
+  constructor(private userRegister: UserRegister, private route: Router) { }
+  onSubmit(form: NgForm) {
     if (form.invalid) {
       Object.keys(form.controls).forEach(field => {
         const control = form.control.get(field);
@@ -30,8 +32,16 @@ export class SignUpComponent {
       });
       return;
     }
-    if(form.valid &&  this.signUpForm.password===this.signUpForm.confirmPassword){
-      this.userRegister.registerUser(this.signUpForm).subscribe({
+    if (form.valid && this.signUpForm.password === this.signUpForm.confirmPassword) {
+      const signUpObj = {
+        firstName: this.signUpForm.firstName,
+        lastName: this.signUpForm.lastName,
+        email: this.signUpForm.email,
+        mobile: this.signUpForm.mobile,
+        password: this.signUpForm.password,
+        role: this.signUpForm.role
+      };
+      this.userRegister.registerUser(signUpObj).subscribe({
         next: (response) => {
           if (response.success) {
             alert("Registration successful");
@@ -44,15 +54,15 @@ export class SignUpComponent {
         error: (err) => console.error("Error is this:", err)
       });
     }
-    else if(this.signUpForm.password!==this.signUpForm.confirmPassword) {
+    else if (this.signUpForm.password !== this.signUpForm.confirmPassword) {
       alert('password mismatch')
-      
+
     }
-    else{
+    else {
       console.log(form.errors)
     }
   }
-  
 
-  
+
+
 }

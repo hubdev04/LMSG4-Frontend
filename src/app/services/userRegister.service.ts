@@ -19,6 +19,7 @@ export class UserRegister{
     constructor(private http: HttpClient) {}
 
     registerUser(user: User): Observable<ApiResponse> {
+      console.log(user)
         return this.http.post<ApiResponse>(this.apiUrl, user);
     }
 }
