@@ -11,17 +11,18 @@
         <input class="form-input px-4 py-2 border border-gray-300 rounded-lg" type="search" placeholder="Search for courses..." aria-label="Search">
         <button class=" text-white px-4 py-2 rounded-lg" style="background-color: #BFCB7B;" type="submit">Search</button>
       </form>
-      <ul class="flex items-center space-x-6">
+      @if(!token)
+     { <ul class="flex items-center space-x-6">
         <li>
-          <a style="background-color: #80239A;" class="border  text-white px-4 py-2 rounded-lg hover:bg-blue-100" href="/login">Login</a>
+          <a style="background-color: #80239A;" class="border  text-white px-4 py-2 rounded-lg hover:bg-blue-100" routerLink="/login">Login</a>
         </li>
         <li>
-          <a style="background-color: #80239A;" class=" text-white px-4 py-2 rounded-lg hover:bg-blue-600" href="/signup">Sign Up</a>
+          <a style="background-color: #80239A;" class=" text-white px-4 py-2 rounded-lg hover:bg-blue-600" routerLink="/signup">Sign Up</a>
         </li>
         <li>
-          <a  style="background-color: #80239A;" class=" text-white px-3 py-2 rounded-lg hover:bg-blue-600" href="/admin">Admin</a>
+          <a  style="background-color: #80239A;" class=" text-white px-3 py-2 rounded-lg hover:bg-blue-600" routerLink="/admin">Admin</a>
         </li>
-      </ul>
+      </ul>}
     </div>
   </div>
 </nav>

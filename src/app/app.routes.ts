@@ -13,6 +13,7 @@ export const routes: Routes = [
   {path:'signup',component:SignUpComponent},
   {path:'login',component:LoginComponent},
   {path:'admin', component:AdminDashboardComponent},
+  {path:'adminLogin',component:LoginComponent}
   ];
 
   @NgModule({

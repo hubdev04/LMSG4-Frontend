@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CourseCardComponent } from '../course-card/course-card.component';
 import { Course } from '../../models/Course.model';
 import { CourseService } from '../../services/courses.service';
@@ -13,9 +13,16 @@ import { CourseService } from '../../services/courses.service';
   styleUrls: ['./list-of-courses.component.css'] // Fixed the typo here
 })
 export class ListOfCoursesComponent implements OnInit {
+  @Input() token!:any;
   categories: string[] = ['Category 1', 'Category 2', 'Category 3'];
   courses: Course[] = [];
+  
+  selectedCategory: string | null = null;
 
+  selectCategory(category: string): void {
+    this.selectedCategory = category;
+    // Optionally, you can also filter courses based on the selected category here
+  }
   constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
