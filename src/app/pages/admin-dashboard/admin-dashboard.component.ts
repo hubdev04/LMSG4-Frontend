@@ -1,36 +1,122 @@
-
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CourseService } from '../../services/courses.service';
+import { RouterModule } from '@angular/router';
+
 interface Course {
+isDeleted: any;
+approvalStatus: any;
   id: number;
   title: string;
   mentor: string;
   status: string;
+  isDelete : boolean;
 }
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports:[CommonModule],
+  imports:[CommonModule,RouterModule],
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
-export class AdminDashboardComponent {
-  courses: Course[] = [
-    { id: 1, title: 'Course Title 1', mentor: 'John Doe', status: 'Pending' },
-    { id: 2, title: 'Course Title 2', mentor: 'Jane Smith', status: 'Accepted' },
-    { id: 3, title: 'Course Title 3', mentor: 'Emily Johnson', status: 'Rejected' }
-  ];
+export class AdminDashboardComponent implements OnInit{
+ 
+  constructor(private service: CourseService) { }
 
-  acceptCourse(course: Course) {
-    course.status = 'Accepted';
+  courses: Course[] = [];
+  ngOnInit(): void{
+    this.service.getAllCourses().subscribe((response: any) =>{
+      console.log(response.result);
+      
+      this.courses= response.result;
+    }, (error:any) =>{
+      return error;
+    });;
   }
+
+
+  //   { id: 1, title: 'Course Title 1', mentor: 'John Doe', status: 'Pending' },
+  //   { id: 2, title: 'Course Title 2', mentor: 'Jane Smith', status: 'Pending' },
+  //   { id: 3, title: 'Course Title 3', mentor: 'Emily Johnson', status: 'Pending' },
+  //   { id: 4, title: 'Course Title 1', mentor: 'John Doe', status: 'Pending' },
+  //   { id: 5, title: 'Course Title 2', mentor: 'Jane Smith', status: 'Pending' },
+  //   { id: 6, title: 'Course Title 3', mentor: 'Emily Johnson', status: 'Pending' }
+  
+  adminId : Number=2
+
+  scrollToSection(sectionId: string): void {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  
+  acceptCourse(course: Course) {
+   course.status = 'APPROVED';
+    //api call => course
+    var change = [{adminId : this.adminId, courseId: course.id,status : course.status}]
+    this.service.changeStatus(change).subscribe(
+      (res:any) => {
+        console.log(res);
+
+        this.courses=  this.courses.map((course) => {
+            if(course.id === res.result[0].id)
+             return res.result[0]
+            else
+             return course;
+            })
+        // course.approvalStatus = 'Accepted';
+      },
+      (error) => 
+      {
+        console.error('Error updating course status:', error);
+      }
+    );
+
+  }
+
 
   rejectCourse(course: Course) {
-    course.status = 'Rejected';
+    course.status = 'DENIED';
+    var change = [{adminId : this.adminId, courseId: course.id,status : course.status}]
+    this.service.changeStatus(change).subscribe(
+      (res:any) => {
+        
+        this.courses = this.courses.map( (course) => 
+        {
+          if(course.id === res.result[0].id)
+            return res.result[0];
+          else
+          return course;
+        })
+      },
+      (error) =>
+      {
+        console.error('Error updating course status:', error);
+      }
+    );
   }
 
-  deleteCourse(course: Course) {
-    this.courses = this.courses.filter(c => c.id !== course.id);
+  deleteCourse(course:Course) {
+    var change = [course.id]
+    this.service.delCourse(change).subscribe(
+      (res:any)=>
+      {   
+        console.log(res);
+        this.courses = this.courses.map((course) => {
+        if(course.id === res.result[0].id)
+          return res.result[0];
+        else
+         return course;
+       })
+       },
+      (error)=>
+      {
+        console.error('Error deleting the course:', error);
+      }
+    );
+    //this.courses = this.courses.filter(c => c.id !== course.id);
   }
 }
+
