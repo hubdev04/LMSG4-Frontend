@@ -1,0 +1,141 @@
+<div class="container mx-auto bg-gray-400 w-full h-auto" id="adme">
+    
+    <div class="flex justify-between items-center border-b pb-4 mb-8">
+        <h2 class="text-2xl font-bold text-blue-500 m-3 ">Admin Dashboard</h2>
+        <button class="text-sm font-medium bg-blue-500 text-white  m-2 py-2 px-4 rounded hover:bg-blue-600 focus:outline-none"  
+        (click)="scrollToSection('allCourses')">View All Courses</button>
+    </div>
+
+    
+    <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 p-2">Approval Requests</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <ng-container *ngFor="let course of courses ;  let i = index">
+                
+                <div *ngIf="course.approvalStatus === 'PENDING'" class="bg-gray-300 shadow-lg rounded-lg p-4 m-3">
+                   
+                  <div class="border-b pb-4 mb-4">
+                    <h3 class="text-lg font-bold text-center text-blue-400">{{ course.title }}</h3>
+                  </div>
+                  <div class="space-y-2">
+                    <p><strong>Course ID:</strong> {{ course.id }}</p>
+                    <p><strong>Mentor:</strong> {{ course.mentor }}</p>
+                    <p><strong>Status:</strong> <span>{{ course.approvalStatus }}</span></p>
+                  </div>
+                  <div class="mt-4 flex justify-between">
+                    <button class="w-full mr-2 bg-blue-400 text-white py-2 rounded hover:bg-blue-600 focus:outline-none" (click)="acceptCourse(course)">Accept</button>
+                    <button class="w-full mr-2 bg-blue-400 text-white py-2 rounded hover:bg-blue-600 focus:outline-none" (click)="rejectCourse(course)">Reject</button>
+                    
+                    
+                  </div>
+                </div>
+              </ng-container>
+              
+        </div>
+    </section>
+
+    
+    <section id="allCourses">
+        <h2 class="text-xl font-semibold mb-4 px-4">All Courses</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+            
+
+            <div  *ngFor="let course of courses">
+                <div *ngIf="course.isDeleted === false" class="bg-gray-300 shadow-lg rounded-lg p-4 m-4">
+
+                
+                <div class="border-b pb-4 mb-4">
+                    <h3 class="text-lg font-bold text-center text-blue-400">{{ course.title }}</h3>
+                </div>
+                <div class="space-y-2">
+                    <p><strong>Course ID:</strong> {{ course.id }}</p>
+                    <p><strong>Mentor:</strong> {{ course.mentor }}</p>
+                    <p><strong>Status:</strong>
+                        <span [ngClass]="{
+                            ' text-bold ': course.approvalStatus === ' Pending',
+                            ' font-medium': course.approvalStatus === ' Accepted',
+                            ' font-bold font-medium': course.approvalStatus === ' Rejected'
+                        }">{{ course.approvalStatus }}</span>
+                    </p>
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <button  class="w-full bg-blue-400 text-white py-2 rounded hover:bg-blue-600 focus:outline-none" 
+                    (click)="deleteCourse(course)"
+                    [disabled]="course.approvalStatus === 'DENIED'"
+                    
+                    >Delete</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- 
+<div class="container mx-auto bg-lavender-100 w-full h-auto" id="adme">
+    
+    <div class="flex justify-between items-center border-b pb-4 mb-8">
+        <h2 class="text-2xl font-bold text-lavender-600 m-3">Admin Dashboard</h2>
+        <button class="text-sm font-medium bg-lavender-500 text-white m-2 py-2 px-4 rounded hover:bg-lavender-600 focus:outline-none"  
+        (click)="scrollToSection('allCourses')">View All Courses</button>
+    </div>
+
+    
+    <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 p-2 text-lavender-600">Approval Requests</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <ng-container *ngFor="let course of courses; let i = index">
+                <div *ngIf="course.approvalStatus === 'PENDING'" class="bg-lavender-200 shadow-lg rounded-lg p-4 m-3">
+                   
+                    <div class="border-b pb-4 mb-4">
+                        <h3 class="text-lg font-bold text-center text-lavender-700">{{ course.title }}</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <p><strong>Course ID:</strong> {{ course.id }}</p>
+                        <p><strong>Mentor:</strong> {{ course.mentor }}</p>
+                        <p><strong>Status:</strong> <span>{{ course.approvalStatus }}</span></p>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="w-full mr-2 bg-lavender-500 text-white py-2 rounded hover:bg-lavender-600 focus:outline-none" (click)="acceptCourse(course)">Accept</button>
+                        <button class="w-full mr-2 bg-lavender-500 text-white py-2 rounded hover:bg-lavender-600 focus:outline-none" (click)="rejectCourse(course)">Reject</button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </section>
+
+    
+    <section id="allCourses">
+        <h2 class="text-xl font-semibold mb-4 px-4 text-lavender-600">All Courses</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div *ngFor="let course of courses">
+                <div *ngIf="course.isDeleted === false" class="bg-lavender-200 shadow-lg rounded-lg p-4 m-4">
+                
+                    <div class="border-b pb-4 mb-4">
+                        <h3 class="text-lg font-bold text-center text-lavender-700">{{ course.title }}</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <p><strong>Course ID:</strong> {{ course.id }}</p>
+                        <p><strong>Mentor:</strong> {{ course.mentor }}</p>
+                        <p><strong>Status:</strong>
+                            <span [ngClass]="{
+                                'text-bold text-lavender-600': course.approvalStatus === 'Pending',
+                                'font-medium text-lavender-700': course.approvalStatus === 'Accepted',
+                                'font-bold text-lavender-800': course.approvalStatus === 'Rejected'
+                            }">{{ course.approvalStatus }}</span>
+                        </p>
+                    </div>
+                    <div class="mt-4 flex justify-center">
+                        <button class="w-full bg-lavender-500 text-white py-2 rounded hover:bg-lavender-600 focus:outline-none" 
+                        (click)="deleteCourse(course)"
+                        [disabled]="course.approvalStatus === 'DENIED'">
+                        Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div> -->

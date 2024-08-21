@@ -1,0 +1,15 @@
+{
+    "Categories":[
+        { "id": 1, "name": "Course 1", "description": "Description for Course 1", "mentor": "mentor-1" },
+        { "id": 2, "name": "Course 2", "description": "Description for Course 2", "mentor": "mentor-1" },
+        { "id": 3, "name": "Course 3", "description": "Description for Course 3", "mentor": "mentor-1" },
+        { "id": 4, "name": "Course 4", "description": "Description for Course 4", "mentor": "mentor-2" },
+        { "id": 5, "name": "Course 5", "description": "Description for Course 5", "mentor": "mentor-2" },
+        { "id": 6, "name": "Course 6", "description": "Description for Course 6", "mentor": "mentor-2" },
+        { "id": 7, "name": "Course 7", "description": "Description for Course 7", "mentor": "mentor-3" },
+        { "id": 8, "name": "Course 8", "description": "Description for Course 8", "mentor": "mentor-3" },
+        { "id": 9, "name": "Course 9", "description": "Description for Course 9", "mentor": "mentor-3" },
+        { "id": 10, "name": "Course 10", "description": "Description for Course 10", "mentor": "mentor-4" }
+    ]
+}
+

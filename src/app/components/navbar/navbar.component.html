@@ -1,0 +1,29 @@
+<nav class=" p-4 shadow-md" style="background-color: #F5ECFC;">
+  <div class="container mx-auto flex items-center justify-between">
+    <div  class="image-logo  items-center ">
+      <!-- <img src="../../../assets/images/logo.png" alt="Logo" class="h-12"> -->
+    </div>
+    <button class="lg:hidden p-2 border border-gray-400 rounded" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="block w-6 h-6 bg-gray-600"></span>
+    </button>
+    <div class="hidden lg:flex lg:items-center lg:space-x-4 w-full" id="navbarSupportedContent">
+      <form class="flex items-center space-x-4 flex-grow">
+        <input class="form-input px-4 py-2 border border-gray-300 rounded-lg" type="search" placeholder="Search for courses..." aria-label="Search" 
+        >
+        <button class=" text-white px-4 py-2 rounded-lg" style="background-color: #BFCB7B;" type="submit">Search</button>
+      </form>
+      @if(!token)
+     { <ul class="flex items-center space-x-6">
+        <li>
+          <a style="background-color: #80239A;" class="border  text-white px-4 py-2 rounded-lg hover:bg-blue-100" routerLink="/login">Login</a>
+        </li>
+        <li>
+          <a style="background-color: #80239A;" class=" text-white px-4 py-2 rounded-lg hover:bg-blue-600" routerLink="/signup">Sign Up</a>
+        </li>
+        <li>
+          <a  style="background-color: #80239A;" class=" text-white px-3 py-2 rounded-lg hover:bg-blue-600" routerLink="/admin">Admin</a>
+        </li>
+      </ul>}
+    </div>
+  </div>
+</nav>

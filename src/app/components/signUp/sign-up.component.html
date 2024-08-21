@@ -1,0 +1,146 @@
+<section class="w-100 bg-gray-100 ">
+  <div class="container mx-auto flex flex-col-reverse lg:flex-row h-full p-6 md:px-2">
+    <!-- Image Column -->
+    <div class="lg:w-1/2 flex justify-center items-center">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="w-full h-auto max-w-md mx-auto" alt="Sample image">
+    </div>
+
+    <!-- Form Column -->
+    <div class="lg:w-1/2 flex justify-center items-center">
+      <div class="w-full max-w-lg bg-white px-6 pt-2 rounded-lg shadow-lg">
+        <form  #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" class="space-y-3">
+          <!-- First Name input -->
+          <div>
+            <label class="block text-gray-500 text-sm font-bold mb-1" for="firstName">
+              First Name <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="firstName" name="firstName" [(ngModel)]="signUpForm.firstName" #firstNameControl="ngModel" 
+              class="form-input w-full px-3 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              placeholder="Enter your first name" required />
+              <div class="text-danger text-red-500 text-xs mt-1" >
+                @if((firstNameControl.touched && firstNameControl.dirty) && firstNameControl.errors?.['required']){
+                  <span>This is required</span>
+                }
+              </div>
+          </div>
+
+          <!-- Last Name input -->
+          <div>
+            <label class="block text-gray-500 text-sm font-bold mb-1" for="lastName">
+              Last Name 
+            </label>
+            <input type="text" id="lastName" name="lastName" [(ngModel)]="signUpForm.lastName" #lastNameControl="ngModel" 
+              class="form-input w-full px-3 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              placeholder="Enter your last name"  />
+    
+          </div>
+
+          <!-- Email input -->
+          <div>
+            <label class="block text-gray-500 text-sm font-bold mb-1" for="email">
+              Email address <span class="text-red-500">*</span>
+            </label>
+            <input type="email" id="email" name="email" [(ngModel)]="signUpForm.email" #emailControl="ngModel"  pattern=".+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              class="form-input w-full px-3 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              placeholder="Enter a valid email address" required />
+            <div  class="text-red-500 text-xs mt-1">
+              @if((emailControl.touched || emailControl.dirty) && emailControl.errors?.['required'])
+              {<span >Email is required.</span>}
+              @else if(emailControl.touched && emailControl.errors?.['pattern'])
+              {<span>Please enter a valid email address.</span>}
+            </div>
+          </div>
+
+          <!-- Phone Number input -->
+          <div>
+            <label class="block text-gray-500 text-sm font-bold mb-1" for="phoneNumber">
+              Phone Number <span class="text-red-500">*</span>
+            </label>
+            <input type="number" id="mobile" name="mobile" [(ngModel)]="signUpForm.mobile" #phoneNumberControl="ngModel"
+              class="form-input w-full px-3 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              placeholder="Enter your phone number" required pattern="\d{10}" />
+              <div class="text-danger text-red-500 text-xs mt-1">
+              @if((phoneNumberControl.touched || phoneNumberControl.dirty) && phoneNumberControl.errors?.['required']){
+                <span>This is required</span>
+              }
+              @else if((phoneNumberControl.touched || phoneNumberControl.dirty) && phoneNumberControl.errors?.['pattern']){
+                <span>Number is invalid</span>
+              }
+            </div>
+            
+          </div>
+
+          <!-- Password input -->
+          <div>
+            <label class="block text-gray-500 text-sm font-bold mb-1" for="password">
+              Password <span class="text-red-500">*</span>
+            </label>
+            <input type="password" id="password" name="password" [(ngModel)]="signUpForm.password" #passwordControl="ngModel" 
+              class="form-input w-full px-3 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              placeholder="Enter password" minlength="6" required />
+            <div  class="text-red-500 text-xs mt-1">
+              @if((passwordControl.touched || passwordControl.dirty) && passwordControl.errors?.['required']){
+                <span>Password is required</span>
+              }
+              @else if((passwordControl.touched || passwordControl.dirty) && passwordControl.errors?.['minlength']){
+                <span>Minimum length required is 6</span>
+              }
+            </div>
+          </div>
+
+          <!-- Confirm Password input -->
+          <div>
+            <label class="block text-gray-500 text-sm font-bold mb-1" for="confirmPassword">
+              Confirm Password <span class="text-red-500">*</span>
+            </label>
+            <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="signUpForm.confirmPassword" #confirmPasswordControl="ngModel" 
+              class="form-input w-full px-3 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              placeholder="Confirm password" required />
+            <div  class="text-red-500 text-xs mt-1">
+              @if((confirmPasswordControl.touched || confirmPasswordControl.dirty) && confirmPasswordControl.errors?.['required']){
+                <span>please confirm your  is password</span>
+              }
+              @else if((confirmPasswordControl.touched || confirmPasswordControl.dirty) && confirmPasswordControl.errors?.['minlength']){
+                <span>Minimum length required is 6</span>
+              }
+            </div>
+          </div>
+          <!-- Role -->
+          <div>
+            <label class="block text-gray-500 text-sm font-bold mb-1">
+              Role <span class="text-red-500">*</span>
+            </label>
+            <div class="flex items-center space-x-4">
+
+              <div class="flex items-center">
+                <input type="radio" id="student" name="role" value="STUDENT" [(ngModel)]="signUpForm.role" #roleControl="ngModel"
+                  class="form-radio h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300"
+                  required />
+                <label for="student" class="ml-2 text-gray-700">Student</label>
+              </div>
+          
+            
+              <div class="flex items-center">
+                <input type="radio" id="mentor" name="role" value="MENTOR" [(ngModel)]="signUpForm.role" #roleControl="ngModel"
+                  class="form-radio h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300"
+                  required />
+                <label for="mentor" class="ml-2 text-gray-700">Mentor</label>
+              </div>
+            </div>
+            <div class="text-red-500 text-xs mt-1">
+              @if((roleControl.touched || roleControl.dirty) && roleControl.errors?.['required']){
+                <span>This is required</span>
+              }
+            </div>
+          </div>
+          
+          <div class="text-center mt-4">
+            <button type="submit"  class="w-full bg-blue-500 text-white py-1 px-4 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Sign Up</button>
+            <p class="mt-2 text-sm">Already have an account? <a routerLink="/login" class="text-blue-500 hover:underline">Login</a></p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

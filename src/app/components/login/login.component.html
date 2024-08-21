@@ -1,0 +1,87 @@
+<section class="bg-gray-100 h-screen flex items-center">
+  <div class="container mx-auto flex flex-col md:flex-row">
+    <!-- Image Column -->
+    <div class="md:w-1/2 flex justify-center items-center mb-6 md:mb-0">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="w-full max-w-md h-auto" alt="Sample image">
+    </div>
+
+    <!-- Form Column -->
+    <div class="md:w-1/2 flex justify-center items-center">
+      <div class="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
+        <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" class="space-y-4">
+          <!-- Email input -->
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+              Email address <span class="text-red-500">*</span>
+            </label>
+            <input type="email" id="email" name="email" [(ngModel)]="logInForm.email" #emailControl="ngModel" pattern=".+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              placeholder="Enter a valid email address" required />
+            <div>
+              @if((emailControl.touched || emailControl.dirty) && emailControl.errors?.['required']){
+                <span class="text-red-500">This is required</span>
+              }
+              @else if((emailControl.touched || emailControl.dirty) && emailControl.errors?.['pattern']){
+                <span class="text-red-500">enter a valid email <address></address></span>
+              }
+            </div>
+          </div>
+
+          <!-- Password input -->
+          <div class="">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+              Password <span class="text-red-500">*</span>
+            </label>
+            <input type="password" id="password" name="password" [(ngModel)]="logInForm.password" #passwordControl="ngModel"
+              class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              placeholder="Enter password" required />
+            <div>
+              @if((passwordControl.touched || passwordControl.dirty) && passwordControl.errors?.['required']){
+                <span class="text-red-500">This is required</span>
+              }
+              
+            </div>
+          </div>
+
+          <!-- Checkbox -->
+          <ng-container *ngIf="currentUrl !== '/adminLogin'"><div>
+            <p></p>
+            <label class="block text-gray-500 text-sm font-bold mb-1">
+              Role <span class="text-red-500">*</span>
+            </label>
+            <div class="flex items-center space-x-4">
+
+              <div class="flex items-center">
+                <input type="radio" id="student" name="role" value="STUDENT" [(ngModel)]="logInForm.role" #roleControl="ngModel"
+                  class="form-radio h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300"
+                  required />
+                <label for="student" class="ml-2 text-gray-700">Student </label>
+              </div>
+          
+            
+              <div class="flex items-center">
+                <input type="radio" id="mentor" name="role" value="MENTOR" [(ngModel)]="logInForm.role" #roleControl="ngModel"
+                  class="form-radio h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300"
+                  required />
+                <label for="mentor" class="ml-2 text-gray-700">Mentor</label>
+              </div>
+            </div>
+            <div class="text-red-500 text-xs mt-1">
+              @if((roleControl.touched || roleControl.dirty) && roleControl.errors?.['required']){
+                <span>This is required</span>
+              }
+            </div>
+          </div>
+        </ng-container>
+
+          <div class="text-center mt-4">
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Login</button>
+            @if(currentUrl!=="/adminLogin")
+           { <p class="mt-2 text-sm">Don't have an account? <a routerLink="/signup" class="text-blue-500 hover:underline">Sign Up</a></p>}
+          </div>
+        
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

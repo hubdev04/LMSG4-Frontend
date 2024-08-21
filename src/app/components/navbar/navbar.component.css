@@ -1,0 +1,10 @@
+.image-logo {
+    background-image: url('../../../assets/images/logo.png'); /* Path to your image */
+    background-size: contain; /* Ensures the image fits within the container while maintaining aspect ratio */
+    background-position: center; /* Centers the image within the div */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    width: 150px; /* Adjust to the desired width */
+    height: 60px; /* Adjust to the desired height */
+    /* Optional: Adjust the dimensions as needed */
+  }
+  
