@@ -1,3 +1,10 @@
+button:disabled {
+  background-color: #a0aec0; /* Lighter color for disabled button */
+  cursor: not-allowed; /* Change cursor to indicate the button is not clickable */
+  opacity: 0.6; /* Reduce opacity for disabled button */
+}
+
+
 .container {
     max-width: 400px;
   }
