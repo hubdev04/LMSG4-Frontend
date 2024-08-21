@@ -5,6 +5,7 @@ export interface Course{
     createdBy:string,
     duration:number,
     approvalStatus:string;
+    description:string,
     createdDate:Date;
     lastModifiedDate:Date;
     lastModifiedBy:string;

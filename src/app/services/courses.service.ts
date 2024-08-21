@@ -24,25 +24,25 @@ export class CourseService {
   getAllCourses(): Observable<any> {
     console.log("get course");
 
-    return this.http.get(this.apiUrl)
+    // return this.http.get(this.apiUrl)
     console.log("get course");
-    // return this.http.get<ApiResponse>(`${this.apiUrl}`).pipe(
+    return this.http.get<ApiResponse>(`${this.apiUrl}`).pipe(
         
-    }
-  //       map((response: ApiResponse) => {
-  //         console.log('API Response:', response); // Debugging
-  //         if (response.success) {
-  //           console.log(response.result);
-  //           return response.result; // Return the array of courses
-  //         } else {
-  //           console.log(response.message);
+    
+        map((response: ApiResponse) => {
+          console.log('API Response:', response); // Debugging
+          if (response.success) {
+            console.log(response.result);
+            return response.result; // Return the array of courses
+          } else {
+            console.log(response.message);
             
-  //           throw new Error(response.message);
-  //         }
-  //       }),
-  //       catchError(this.handleError)
-  //     ); 
-  // }
+            throw new Error(response.message);
+          }
+        }),
+        catchError(this.handleError)
+      ); 
+  }
   
   changeStatus(change: any): Observable<any> {
     return this.http.put<ApiResponse>(`${this.api}`,change);

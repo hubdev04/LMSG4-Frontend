@@ -12,6 +12,5 @@ import { ListOfCoursesComponent } from '../../components/list-of-courses/list-of
   styleUrl: './homepage.component.css'
 })
 export class HomepageComponent {
-  token:any=localStorage.getItem('authorization');
-  
+  token:any=localStorage.getItem('authorization')
 }

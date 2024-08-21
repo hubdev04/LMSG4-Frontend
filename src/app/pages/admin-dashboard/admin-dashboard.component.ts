@@ -26,13 +26,15 @@ export class AdminDashboardComponent implements OnInit{
 
   courses: Course[] = [];
   ngOnInit(): void{
-    this.service.getAllCourses().subscribe((response: any) =>{
-      console.log(response.result);
-      
-      this.courses= response.result;
-    }, (error:any) =>{
-      return error;
-    });;
+    this.service.getAllCourses().subscribe({
+      next: (response) =>{
+     // console.log("hello",response.result);
+     
+      this.courses= response;
+    }, error:(err) =>{
+      console.log(console.log(err));
+      ;
+    }});
   }
 
 
@@ -56,23 +58,23 @@ export class AdminDashboardComponent implements OnInit{
    course.status = 'APPROVED';
     //api call => course
     var change = [{adminId : this.adminId, courseId: course.id,status : course.status}]
-    this.service.changeStatus(change).subscribe(
-      (res:any) => {
-        console.log(res);
+    this.service.changeStatus(change).subscribe({
+      next:(response) => {
+        console.log(response);
 
         this.courses=  this.courses.map((course) => {
-            if(course.id === res.result[0].id)
-             return res.result[0]
+            if(course.id === response.result[0].id)
+             return response.result[0]
             else
              return course;
             })
         // course.approvalStatus = 'Accepted';
       },
-      (error) => 
+      error:(err) => 
       {
-        console.error('Error updating course status:', error);
+        console.error('Error updating course status:', err);
       }
-    );
+  });
 
   }
 
