@@ -44,7 +44,8 @@
           </div>
 
           <!-- Checkbox -->
-          <div>
+          <ng-container *ngIf="currentUrl !== '/adminLogin'"><div>
+            <p></p>
             <label class="block text-gray-500 text-sm font-bold mb-1">
               Role <span class="text-red-500">*</span>
             </label>
@@ -54,7 +55,7 @@
                 <input type="radio" id="student" name="role" value="STUDENT" [(ngModel)]="logInForm.role" #roleControl="ngModel"
                   class="form-radio h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300"
                   required />
-                <label for="student" class="ml-2 text-gray-700">Student</label>
+                <label for="student" class="ml-2 text-gray-700">Student </label>
               </div>
           
             
@@ -71,12 +72,14 @@
               }
             </div>
           </div>
-          
+        </ng-container>
 
           <div class="text-center mt-4">
             <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Login</button>
-            <p class="mt-2 text-sm">Don't have an account? <a href="/signup" class="text-blue-500 hover:underline">Sign Up</a></p>
+            @if(currentUrl!=="/adminLogin")
+           { <p class="mt-2 text-sm">Don't have an account? <a routerLink="/signup" class="text-blue-500 hover:underline">Sign Up</a></p>}
           </div>
+        
         </form>
       </div>
     </div>
