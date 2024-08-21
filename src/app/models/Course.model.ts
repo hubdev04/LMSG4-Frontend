@@ -10,5 +10,5 @@ export interface Course{
     lastModifiedBy:string;
     isActive:string;
     isDeleted:string;
-
+    role:string
 }

@@ -16,7 +16,7 @@ interface ApiResponse {
 
 export class CourseService {
     
-  private apiUrl = 'http://localhost:8081/courses/';
+  private apiUrl = 'http://localhost:8082/courses/';
 
   constructor(private http: HttpClient) {}
 

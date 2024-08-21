@@ -17,7 +17,7 @@ export class SignUpComponent {
   phoneNumber : '',
   password : '',
   confirmPassword : '',
- // role: '',
+ role: ''
   }
   constructor(private userRegister: UserRegister) {}
   onSubmit(form :NgForm){
@@ -34,13 +34,18 @@ export class SignUpComponent {
           if (response.success) {
             alert("Registration successful");
           } else {
+            console.log("hello");
             console.error(response.message);
           }
         },
-        error: (err) => console.error("Error:", err)
+        error: (err) => console.error("Error is this:", err)
       });
     }
-    else {
+    else if(this.signUpForm.password!==this.signUpForm.confirmPassword) {
+      alert('password mismatch')
+      
+    }
+    else{
       console.log(form.errors)
     }
   }

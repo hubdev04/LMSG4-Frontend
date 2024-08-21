@@ -1,3 +1,13 @@
-ul li a{
-    background-color: #A888B1;
-}
+/* Add this to your component's CSS or global styles */
+.selected {
+    position: relative;
+  }
+  
+  .selected a {
+    color: #1a202c; /* Adjust text color if needed */
+  }
+  
+  .selected .border-b-2 {
+    display: block;
+  }
+  
