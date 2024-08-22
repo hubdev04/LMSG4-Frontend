@@ -20,6 +20,10 @@ export class CourseCardComponent {
   constructor(private router:Router){}
   @Input() token!:any;
   @Input() course!: Course;
+  imageLinks:any={
+    'webDevelopment':'https://github.com/hubdev04/candidateApplicationPlatform/blob/main/src/images/webd.jpg?raw=true',
+      
+  }
   onSubmit(token:any){
       if(!token){
         this.router.navigate(['/signup'])

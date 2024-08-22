@@ -1,0 +1,94 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3e8ff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container for the form */
+  .container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f3e8ff;
+  }
+  
+  /* Form wrapper */
+  .form-wrapper {
+    max-width: 500px;
+    width: 100%;
+    background-color: #e3d3ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form title */
+  .form-title {
+    font-size: 24px;
+    color: #5a189a;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Form group */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Form label */
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #5a189a;
+  }
+  
+  /* Form input */
+  .form-input,
+  .form-input select,
+  .form-input textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b1a1d4;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #d9534f;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none; /* Hide by default */
+  }
+  
+  /* Submit button */
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #7b2cbf;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  .submit-button:hover {
+    background-color: #5a189a;
+  }
+  
+  /* Show error message when input is invalid */
+  input:invalid + .error-message,
+  select:invalid + .error-message,
+  textarea:invalid + .error-message {
+    display: block;
+  }
+  
