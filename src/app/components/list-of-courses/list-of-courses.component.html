@@ -16,9 +16,12 @@
   </div>
 
   <!-- Courses Grid -->
-  <div class="list-courses grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div *ngFor="let course of filteredCourses" class="bg-white shadow-lg rounded-lg overflow-hidden">
+  <div  class="list-courses grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <ng-container *ngFor="let course of filteredCourses">
+    <div *ngIf="course.approvalStatus==='APPROVED'"  class="bg-white shadow-lg rounded-lg overflow-hidden">
+     
       <app-course-card [course]="course" [token]="token"></app-course-card>
     </div>
+  </ng-container>
   </div>
 </div>

@@ -14,7 +14,7 @@ import { CourseService } from '../../services/courses.service';
 })
 export class ListOfCoursesComponent implements OnInit {
   @Input() token!:any;
-  categories: string[] = ['development', 'Psychology', 'Buisness'];
+  categories: string[] = ['Front-End Development', 'Back-End Development', 'Game Development','App Development'];
   courses: Course[] = [];
   filteredCourses:Course[]=[];
   selectedCategory: string | null = null;
